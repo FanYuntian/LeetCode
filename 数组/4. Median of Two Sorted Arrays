@@ -1,0 +1,56 @@
+static int x = []{
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    return 0;
+}();//提升运行速度
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = nums1.size();
+        int n2 = nums2.size();
+        if(n1==0){
+            if(n2%2==0) return 0.5*(nums2[0.5*n2]+nums2[0.5*n2-1]);
+            else return nums2[0.5*(n2-1)];
+        }
+         if(n2==0){
+            if(n1%2==0) return 0.5*(nums1[0.5*n1]+nums1[0.5*n1-1]);
+            else return nums1[0.5*(n1-1)];
+        }
+       
+        int n3 = (n1+n2)/2+1;
+        vector<int>nums3;
+            int i = 0;//nums1中索引器
+            int j = 0;//nums2中索引器
+            int a = 0;//nums3中索引器
+            for(a;a<n3;a++){
+                if(n1!=i && n2!=j){
+                  if(nums1[i]<nums2[j]){
+                        nums3.push_back(nums1[i]);
+                        i++;
+                    }
+                    else{
+                        nums3.push_back(nums2[j]);
+                        j++;
+                    }  
+                }
+                else{
+                    if(n1 == i){
+                        nums3.push_back(nums2[j]);
+                        j++;
+                    }
+                    else{
+                        nums3.push_back(nums1[i]);
+                        i++;
+                    }
+                }    
+            }
+        
+        if((n1+n2)%2 == 0){
+            return (nums3[n3-1]+nums3[n3-2])*0.5;
+        }
+        else{
+            return nums3[n3-1];
+        }
+        
+    }
+};
