@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n = nums.size();
+        int l = 0; int r = n-1;
+        int retL = -2; int retR = -2;
+        while(l<n && retL ==-2){            
+            if(nums[l]==target){
+                retL = l;
+            }else if(nums[l]<target){
+                l++;
+            }else{
+                return vector<int>{-1,-1};
+            }               
+        }
+        if(l==n) retL = -1;
+        
+        while(r>-1 && retR == -2){
+             if(nums[r]==target){
+                retR = r;
+            }else if(nums[r]>target){
+                r--;
+            }else{
+                return vector<int>{-1,-1};
+            }
+        }
+        if(r==-1) retR =-1;
+        
+        return vector<int>{retL,retR};
+    }
+};
+//在此基础上可以使用二分查找来提升速度
