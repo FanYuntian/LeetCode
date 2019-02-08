@@ -1,0 +1,27 @@
+static int x = []{     cin.tie(NULL);     ios::sync_with_stdio(false);     return 0; }();
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int index = 0;
+        int max = 1;
+        int len = s.length();
+        if(len == 0) return 0;
+        if(len == 1) return 1;
+        else{
+            for(int i = 1;i<len;i++){
+                for(int j = i-1;j>=index;j--){
+                    if(s[i]==s[j]){
+                        index = j+1;
+                        break;
+                    }
+                    else{
+                        if(max<i-j+1)
+                            max = i-j+1;
+                    }
+                }
+            }
+            return max;
+        }
+       
+    }
+};
