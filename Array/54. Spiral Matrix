@@ -1,0 +1,58 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int>ret;
+        
+        if(matrix.empty()) return {};
+        
+        int row = matrix.size();
+        int col = matrix[0].size();
+        int n = 0;
+        int a1 = col-1;; int a2 = row-1; int a3 = 0; int a4 = 0;
+        int i = 0; int j = 0;
+        while(n<row*col){
+            while(j<=a1 && n<row*col){
+                ret.push_back(matrix[i][j]);
+                n++;
+                if(j == a1){
+                    a4+=1;
+                    i++;
+                    break;
+                }
+                j++;
+            }
+            while(i<=a2 && n<row*col){
+                ret.push_back(matrix[i][j]);
+                n++;
+                if(i == a2){
+                    a1-=1;
+                    j--;
+                    break;
+                }
+                i++;
+            }
+            while(j>=a3 && n<row*col){
+                ret.push_back(matrix[i][j]);
+                n++;
+                if(j == a3){
+                    a2-=1;
+                    i--;
+                    break;
+                }
+                j--;
+            }
+            while(i>=a4 && n<row*col){
+                ret.push_back(matrix[i][j]);
+                n++;
+                if(i == a4){
+                    a3+=1;
+                    j++;
+                    break;
+                }
+                i--;
+            }
+        }
+        return ret;
+    }
+};
+//回想到了我的第一个游戏项目：贪吃蛇
