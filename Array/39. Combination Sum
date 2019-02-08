@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
+        vector<vector<int>>ret;
+        vector<int>combin;
+        SumOnce(candidates,target,ret,combin,0);
+        return ret;
+    }
+    void SumOnce(vector<int>& candidates,int target,vector<vector<int>>& ret,
+                vector<int>& combin, int begin){
+        if(target==0){
+            ret.push_back(combin);
+            return ;
+        }
+        for(int i = begin; i<candidates.size() && target >= candidates[i];++i ){
+            combin.push_back(candidates[i]);
+            SumOnce(candidates,target-candidates[i],ret,combin,i);
+            combin.pop_back();
+        }
+    }
+};
