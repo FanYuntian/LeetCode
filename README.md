@@ -4,7 +4,8 @@
 双指针（two pointers）要在有序数组上（多为升序）操作。//sort（）；
 可以让查找时间复杂度降次
 即 有序的数据存储可以提高查找速度（二分法）
-
+可参考
+https://leetcode.com/explore/learn/card/array-and-string/205/array-two-pointer-technique/1156/
 *******************************************************************************************************
 对于查找时 使用的for循环与while循环，根据条件设置循环终止点，可以在时间复杂度难以改善时，适当提高查找效率。
 如 twoSum threeSum中的 sums[i]>target,sums[i]+sums[i+1]>target（前提 要对sums排序）等。
